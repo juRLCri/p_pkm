@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+:root {
+
+}
+
+html {
+  @apply h-full;
+}
+
+body {
+  @apply flex flex-col min-h-screen h-full bg-white text-black dark:bg-gray-900 dark:text-white;
+}
+
+#root {
+  @apply flex flex-col min-h-screen h-full;
+}
+
+header {
+  @apply bg-red-500 text-white font-bold dark:bg-gray-800;
+}
+
+main {
+  @apply flex-1 min-h-0 overflow-y-auto bg-white dark:bg-gray-900;
+}
+
+footer {
+  @apply bg-red-500 text-white font-bold dark:bg-gray-800;
+}
