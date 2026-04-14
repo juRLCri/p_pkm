@@ -29,7 +29,7 @@ jobs:
           node-version: '24'
 
       - name: Instalar las Dependencias del Proyecto
-        run: npm install --legacy-peer-deps
+        run: npm install 
       - name: Compilar la página para distribución
         run: npm run build
       - name: Asegurar el 404 fallback
