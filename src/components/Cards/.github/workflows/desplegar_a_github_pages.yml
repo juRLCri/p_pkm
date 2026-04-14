@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  
 
 permissions:
   contents: read
@@ -22,6 +23,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
 
     steps:
@@ -34,23 +36,23 @@ jobs:
           node-version: 24
           cache: npm
 
-      - name: Instalar dependencias del proyecto
+      - name: Instalar dependencias
         run: npm install
 
-      - name: Compilar la página para distribución
+      - name: Build del proyecto
         run: npm run build
 
-      - name: Asegurar el 404 fallback
+      - name: 404 fallback
         run: cp ./dist/index.html ./dist/404.html
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Subir los compilados a GitHub Pages
+      - name: Subir artefactos
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
-      - name: Publicar GitHub Pages
+      - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
